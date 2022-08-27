@@ -24,7 +24,11 @@ expressao: INT                                           # inteiro
 
 booleano: BOOLEANO                                       # bool
         | expressao '=' expressao                        # opRel
+        | expressao '!=' expressao                        # opRel
+        | expressao '<' expressao                        # opRel
+        | expressao '>' expressao                        # opRel  
         | expressao '<=' expressao                       # opRel
+        | expressao '>=' expressao                       # opRel        
         | 'nao' booleano                                 # naoLogico
         | booleano 'e' booleano                          # eLogico
         | booleano 'or' booleano                         # ouLogico
