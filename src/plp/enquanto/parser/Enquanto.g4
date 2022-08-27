@@ -10,8 +10,7 @@ comando: ID (',' ID)* ':=' expressao (',' expressao)*                           
        | 'enquanto' booleano 'faca' comando                                                      # enquanto
        | 'repita' expressao 'vezes' comando                                                      # repita
        | 'quando' expressao (expressao ':' comando)* '_ :' comando                               # quando
-       | 'exiba' TEXTO                                                                           # exiba
-       | 'escreva' expressao                                                                     # escreva
+       | 'exiba' (TEXTO | expressao)                                                              # exiba
        | 'para' ID 'em' expressao '..' expressao 'faca' comando                                  # para
        | '{' seqComando';' '}'                                                                   # bloco
        ;

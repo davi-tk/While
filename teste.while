@@ -1,11 +1,4 @@
 a, b, c := 3, 5, 7;
 
-escreva a;
-escreva b;
-escreva c;
-
-a, b := b , a;
-
-escreva a;
-escreva b;
-
+exiba a;
+exiba "DEU CERTO FINALNEMTE"

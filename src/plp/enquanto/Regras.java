@@ -3,6 +3,8 @@ package plp.enquanto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import plp.enquanto.Linguagem.*;
 import plp.enquanto.parser.EnquantoBaseListener;
 import plp.enquanto.parser.EnquantoParser.*;
@@ -86,11 +88,11 @@ public class Regras extends EnquantoBaseListener {
 		valores.insira(ctx, skip);
 	}
 
-	@Override
-	public void exitEscreva(EscrevaContext ctx) {
-		final Expressao exp = valores.pegue(ctx.expressao());
-		valores.insira(ctx, new Escreva(exp));
-	}
+	// @Override
+	// public void exitEscreva(EscrevaContext ctx) {
+	// 	final Expressao exp = valores.pegue(ctx.expressao());
+	// 	valores.insira(ctx, new Escreva(exp));
+	// }
 
 	@Override
 	public void exitPrograma(ProgramaContext ctx) {
@@ -193,9 +195,10 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitExiba(ExibaContext ctx) {
-		final String t = ctx.TEXTO().getText();
-		final String texto = t.substring(1, t.length() - 1);
-		valores.insira(ctx, new Exiba(texto));
+		final TerminalNode t = ctx.TEXTO();
+		final Expressao exp = valores.pegue(ctx.expressao());
+		Object ret = t == null ? exp : t.getText();
+		valores.insira(ctx, new Exiba(ret));
 	}
 
 	@Override
