@@ -34,6 +34,23 @@ interface Linguagem {
 		}
 	}
 
+	class Repita implements Comando {
+		private final Expressao expressao;
+		private final Comando comando;
+
+		public Repita(Expressao expressao, Comando comando) {
+			this.expressao = expressao;
+			this.comando = comando;
+		}
+
+		@Override
+		public void execute() {
+			for (int i = 0; i < expressao.getValor(); i++){
+				comando.execute();
+			}
+		}
+	}
+
 	class Se implements Comando {
 		private final List<Bool> condicoes;
 		private final List<Comando> comandos;

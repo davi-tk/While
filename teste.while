@@ -1,10 +1,2 @@
-a := 40;
-
-se a = 10 entao
-    exiba "sou 10"
-senao se a = 20 entao
-    exiba "sou 20"
-senao se a = 40 entao
-    exiba "sou 40"
-senao
-    exiba "sou um numero imprevisto"
+repita 5 vezes 
+    exiba "Olá"

@@ -37,6 +37,14 @@ public class Regras extends EnquantoBaseListener {
 	}
 
 	@Override
+	public void exitRepita(RepitaContext ctx) {
+		final Expressao expressao = valores.pegue(ctx.expressao());
+		final Comando comando = valores.pegue(ctx.comando());
+		
+		valores.insira(ctx, new Repita(expressao, comando));
+	}
+
+	@Override
 	public void exitSe(SeContext ctx) {
 		final List<Bool> condicoes = new ArrayList<>();
 		final List<Comando> comandos = new ArrayList<>();

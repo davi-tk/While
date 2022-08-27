@@ -8,6 +8,7 @@ comando: ID ':=' expressao                                                      
        | 'skip'                                                                                  # skip
        | 'se' booleano 'entao' comando ('senaose' booleano 'entao' comando)* 'senao' comando     # se
        | 'enquanto' booleano 'faca' comando                                                      # enquanto
+       | 'repita' expressao 'vezes' comando                                                      # repita
        | 'exiba' TEXTO                                                                           # exiba
        | 'escreva' expressao                                                                     # escreva
        | 'para' ID 'em' expressao '..' expressao 'faca' comando                                  # para
