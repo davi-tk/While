@@ -45,6 +45,22 @@ public class Regras extends EnquantoBaseListener {
 	}
 
 	@Override
+	public void exitQuando(QuandoContext ctx) {
+		final List<Expressao> expressoes = new ArrayList<>();
+		final List<Comando> comandos = new ArrayList<>();
+
+		for(ExpressaoContext c: ctx.expressao()){
+			expressoes.add(valores.pegue(c));
+		}
+
+		for(ComandoContext c: ctx.comando()){
+			comandos.add(valores.pegue(c));
+		}
+		
+		valores.insira(ctx, new Quando(expressoes, comandos));
+	}
+
+	@Override
 	public void exitSe(SeContext ctx) {
 		final List<Bool> condicoes = new ArrayList<>();
 		final List<Comando> comandos = new ArrayList<>();

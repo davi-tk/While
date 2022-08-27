@@ -1,2 +1,6 @@
-repita 5 vezes 
-    exiba "Olá"
+x := 23;
+
+quando x
+    1 : exiba "Um"
+    2 : exiba "Dois"
+    _ : exiba "Outro"

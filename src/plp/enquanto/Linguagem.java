@@ -87,6 +87,34 @@ interface Linguagem {
 		}
 	}
 
+	class Quando implements Comando {
+		private final List<Expressao> expressoes;
+		private final List<Comando> comandos;
+
+		public Quando (List<Expressao> expressoes, List<Comando> comandos){
+			this.expressoes = expressoes;
+			this.comandos = comandos;
+		}
+
+		@Override
+		public void execute() {
+			Expressao expressaoBase = expressoes.get(0);
+			expressoes.remove(0);
+
+			for (int i = 0; i < expressoes.size(); i++){
+				Expressao expressaoAtual = expressoes.get(i);
+				if (expressaoBase.getValor() == expressaoAtual.getValor()){
+
+					comandos.get(i).execute();
+					return;
+				}
+			}
+
+			comandos.get(comandos.size() - 1).execute();
+		}
+
+	}
+
 	Skip skip = new Skip();
 	class Skip implements Comando {
 		@Override
