@@ -10,7 +10,7 @@ comando: ID ':=' expressao                               # atribuicao
        | 'enquanto' booleano 'faca' comando              # enquanto
        | 'exiba' TEXTO                                   # exiba
        | 'escreva' expressao                             # escreva
-       | '{' seqComando '}'                              # bloco
+       | '{' seqComando';' '}'                           # bloco
        ;
 
 expressao: INT                                           # inteiro
