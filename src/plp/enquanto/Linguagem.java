@@ -178,17 +178,17 @@ interface Linguagem {
 	}
 
 	class Atribuicao implements Comando {
-		private final String id;
-		private final Expressao exp;
+		private final List<String> ids;
+		private final List<Expressao> expressoes;
 
-		Atribuicao(String id, Expressao exp) {
-			this.id = id;
-			this.exp = exp;
+		Atribuicao(List<String> ids, List<Expressao> expressoes) {
+			this.ids = ids;
+			this.expressoes = expressoes;
 		}
 
 		@Override
 		public void execute() {
-			ambiente.put(id, exp.getValor());
+			for (int i = 0; i < ids.size(); i++) ambiente.put(ids.get(i), expressoes.get(i).getValor());
 		}
 	}
 

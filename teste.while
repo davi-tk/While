@@ -1,6 +1,11 @@
-x := 23;
+a, b, c := 3, 5, 7;
 
-quando x
-    1 : exiba "Um"
-    2 : exiba "Dois"
-    _ : exiba "Outro"
+escreva a;
+escreva b;
+escreva c;
+
+a, b := b , a;
+
+escreva a;
+escreva b;
+

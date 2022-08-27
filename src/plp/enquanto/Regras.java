@@ -108,17 +108,25 @@ public class Regras extends EnquantoBaseListener {
 	@Override
 	public void exitSeqComando(SeqComandoContext ctx) {
 		final List<Comando> comandos = new ArrayList<>();
-		for (ComandoContext c : ctx.comando()) {
-			comandos.add(valores.pegue(c));
+		for (ComandoContext cc : ctx.comando()) {
+			comandos.add(valores.pegue(cc));
 		}
 		valores.insira(ctx, comandos);
 	}
 
 	@Override
 	public void exitAtribuicao(AtribuicaoContext ctx) {
-		final String id = ctx.ID().getText();
-		final Expressao exp = valores.pegue(ctx.expressao());
-		valores.insira(ctx, new Atribuicao(id, exp));
+		final List<String> ids = new ArrayList<>();
+		final List<Expressao> expressoes = new ArrayList<>();
+		int i = 0;
+
+		for (ExpressaoContext ec : ctx.expressao()){
+			expressoes.add(valores.pegue(ec));
+			ids.add(ctx.ID(i).getText());
+			i++;
+		}
+
+		valores.insira(ctx, new Atribuicao(ids, expressoes));
 	}
 
 	@Override
