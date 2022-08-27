@@ -1,4 +1,5 @@
 a := 10;
-b := 20;
-escreva a + b;
-exiba "as"
+b := 3;
+escreva a / b;
+
+exiba "fim"
