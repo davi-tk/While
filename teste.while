@@ -1,7 +1,2 @@
-a := 3;
-b := 10;
-
-se 5 >= 4 entao
-    exiba "True"
-senao
-    exiba "False"
+para i em 1 .. 5 faca
+    escreva i

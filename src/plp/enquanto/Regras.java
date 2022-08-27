@@ -118,6 +118,15 @@ public class Regras extends EnquantoBaseListener {
 	}
 
 	@Override
+	public void exitPara(ParaContext ctx){
+		final String id = ctx.ID().getText();
+		final Expressao expInicio = valores.pegue(ctx.expressao(0));
+		final Expressao expFim = valores.pegue(ctx.expressao(1));
+		final Comando comando = valores.pegue(ctx.comando());
+		valores.insira(ctx, new Para(id, expInicio, expFim, comando));
+	}
+
+	@Override
 	public void exitELogico(ELogicoContext ctx) {
 		final Bool esq = valores.pegue(ctx.booleano(0));
 		final Bool dir = valores.pegue(ctx.booleano(1));
@@ -162,6 +171,7 @@ public class Regras extends EnquantoBaseListener {
 		final Bool dir = valores.pegue(ctx.booleano(1));
 		valores.insira(ctx, new XorLogico(esq, dir));
 	}
+
 
 	@Override
 	public void exitOpRel(OpRelContext ctx) {

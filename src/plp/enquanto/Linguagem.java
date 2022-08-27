@@ -131,6 +131,28 @@ interface Linguagem {
 		}
 	}
 
+	class Para implements Comando {
+		private final String id;
+		private final Expressao expInicio;
+		private final Expressao expFim;
+		private final Comando comando;
+
+		public Para (String id, Expressao expInicio, Expressao expFim, Comando comando){
+			this.id = id;
+			this.expInicio = expInicio;
+			this.expFim = expFim;
+			this.comando = comando;
+		}
+
+		@Override
+		public void execute() {
+			for (int i = expInicio.getValor(); i <= expFim.getValor(); i++) {
+				ambiente.put(id, i);
+				comando.execute();
+			}
+		}
+	}
+
 	/*
 	   Expressoes
 	 */
