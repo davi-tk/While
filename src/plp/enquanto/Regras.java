@@ -150,6 +150,20 @@ public class Regras extends EnquantoBaseListener {
 	}
 
 	@Override
+	public void exitOuLogico(OuLogicoContext ctx){
+		final Bool esq = valores.pegue(ctx.booleano(0));
+		final Bool dir = valores.pegue(ctx.booleano(1));
+		valores.insira(ctx, new OrLogico(esq, dir));
+	}
+
+	@Override
+	public void exitXorLogico(XorLogicoContext ctx){
+		final Bool esq = valores.pegue(ctx.booleano(0));
+		final Bool dir = valores.pegue(ctx.booleano(1));
+		valores.insira(ctx, new XorLogico(esq, dir));
+	}
+
+	@Override
 	public void exitOpRel(OpRelContext ctx) {
 		final Expressao esq = valores.pegue(ctx.expressao(0));
 		final Expressao dir = valores.pegue(ctx.expressao(1));

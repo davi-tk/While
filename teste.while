@@ -1,5 +1,7 @@
-a := 10;
-b := 3;
-escreva a / b;
+a := 3;
+b := 10;
 
-exiba "fim"
+se verdadeiro xor verdadeiro entao
+    exiba "True"
+senao
+    exiba "False"

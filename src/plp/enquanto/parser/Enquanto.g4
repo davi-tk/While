@@ -27,6 +27,8 @@ booleano: BOOLEANO                                       # bool
         | expressao '<=' expressao                       # opRel
         | 'nao' booleano                                 # naoLogico
         | booleano 'e' booleano                          # eLogico
+        | booleano 'or' booleano                         # ouLogico
+        | booleano 'xor' booleano                        # xorLogico
         | '(' booleano ')'                               # boolPar
         ;
 
