@@ -1,4 +1,4 @@
-// Generated from ./src/plp/enquanto/parser/Enquanto.g4 by ANTLR 4.9.2
+// Generated from .\src\plp\enquanto\parser\Enquanto.g4 by ANTLR 4.9.2
 package plp.enquanto.parser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

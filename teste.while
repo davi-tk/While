@@ -1,3 +1,4 @@
 a := 10;
-escreva a;
+b := 20;
+escreva a + b;
 exiba "as"
