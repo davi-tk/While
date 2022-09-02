@@ -2,7 +2,7 @@ grammar Enquanto;
 
 programa : seqComando;     // sequência de comandos
 
-seqComando: comando (';' comando)* ;
+seqComando: comando ';' (comando ';')* ;
 
 comando: ID (',' ID)* ':=' expressao (',' expressao)*                                            # atribuicao
        | 'skip'                                                                                  # skip
@@ -10,9 +10,9 @@ comando: ID (',' ID)* ':=' expressao (',' expressao)*                           
        | 'enquanto' booleano 'faca' comando                                                      # enquanto
        | 'repita' expressao 'vezes' comando                                                      # repita
        | 'quando' expressao (expressao ':' comando)* '_ :' comando                               # quando
-       | 'exiba' (TEXTO | expressao)                                                              # exiba
+       | 'exiba' (TEXTO | expressao)                                                             # exiba
        | 'para' ID 'em' expressao '..' expressao 'faca' comando                                  # para
-       | '{' seqComando';' '}'                                                                   # bloco
+       | '{' seqComando '}'                                                                      # bloco
        ;
 
 expressao: INT                                                                                   # inteiro

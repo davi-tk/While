@@ -1,4 +1,10 @@
-a, b, c := 3, 5, 7;
+x := 234;
 
-exiba a;
-exiba "DEU CERTO FINALNEMTE"
+se x = 10 entao
+    exiba "igual"
+senaose x < 15 entao
+    exiba "maior que 10"
+senaose x < 20 entao
+    exiba "maior que 15"
+senao 
+    exiba "maior que 20";

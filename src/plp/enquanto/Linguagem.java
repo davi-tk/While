@@ -55,13 +55,24 @@ interface Linguagem {
 		private final List<Bool> condicoes;
 		private final List<Comando> comandos;
 		private final List<Comando> comandosSeNaoSe;
+		private final List<Bool> condicoesSeNaoSe;
 
 		public Se(List<Bool> condicoes, List<Comando> comandos) {
 			this.condicoes = condicoes;
 			this.comandos = comandos;
 			
-			if(condicoes.size() > 1) this.comandosSeNaoSe = comandos.subList(1, comandos.size() - 1);
-			else this.comandosSeNaoSe = null;
+			if(condicoes.size() > 1) {
+			
+				this.comandosSeNaoSe = comandos.subList(1, comandos.size() - 1);
+				this.condicoesSeNaoSe = condicoes.subList(1, condicoes.size());
+
+			}
+			
+			else {
+			
+			this.comandosSeNaoSe = null;
+			this.condicoesSeNaoSe = null;
+			} 
 		}
 
 		@Override
@@ -70,19 +81,26 @@ interface Linguagem {
 			if (condicoes.get(0).getValor()){
 				
 				comandos.get(0).execute();
-				condicoes.remove(0);
+				return;
 			} 
+			
 
 			//senao se
-			else if (comandosSeNaoSe != null) {
-				for (int i = 0; i < condicoes.size(); i++) { 
-					if (condicoes.get(i).getValor()) comandosSeNaoSe.get(i).execute();
+			else if (condicoesSeNaoSe != null) {
+				for (int i = 0; i < condicoesSeNaoSe.size(); i++) { 
+					if(condicoesSeNaoSe.get(i).getValor()){
+						comandosSeNaoSe.get(i).execute();
+						return;			
+					} 
 				}
-			}
 
+				//senao
+				comandos.get(comandos.size()-1).execute();
+			}
+			
 			//senao
 			else comandos.get(comandos.size()-1).execute();
-
+		
 			
 		}
 	}
@@ -153,6 +171,7 @@ interface Linguagem {
 
 	class Exiba implements Comando {
 		private final Object obj;
+		private String texto = "";
 
 		public Exiba(Object obj) {
 			this.obj = obj;
@@ -160,8 +179,10 @@ interface Linguagem {
 
 		@Override
 		public void execute() {
-			if (obj instanceof String)
-				System.out.println(obj);
+			if (obj instanceof String){
+				texto = (String) obj;
+				System.out.println(texto.substring(1, texto.length() - 1));
+			}
 			
 			else if (obj instanceof Expressao){
 				Expressao exp = (Expressao) obj;
